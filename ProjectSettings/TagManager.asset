@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Projectile
   - HiScore
+  - Wall
+  - Enemy
+  - Ceiling
   layers:
   - Default
   - TransparentFX

@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = .1f;
-    public float projectileSpeed = .1f;
 
     public GameObject leftWall;
     public GameObject rightWall;
     public GameObject projectile;
 
-    private float forceMultiplier = 20;
     private bool launched;
 
     // Start is called before the first frame update
@@ -30,24 +26,16 @@ public class PlayerController : MonoBehaviour
 
         if (newPosition != oldPosition && InsideLevel(newPosition))
         {
-            transform.position = newPosition;
-            //if (!launched) 
-            //{
-            //    ChangeProjectilePosition(newPosition.x);
-            //}            
+            transform.position = newPosition;           
         }
 
         if (!launched && Input.GetButtonDown("Jump"))
         {
-            LaunchProjectile();
+            var projController = projectile.GetComponent<ProjectileController>();
+            projController.Launch(gameObject);
+            launched = true;
         }
     }
-
-    //private void ChangeProjectilePosition(float newPositionX)
-    //{
-    //    var oldPosition = projectile.transform.position;
-    //    projectile.transform.position = new Vector3(newPositionX, oldPosition.y, oldPosition.z);
-    //}
 
     private bool InsideLevel(Vector3 newPosition)
     {
@@ -59,19 +47,5 @@ public class PlayerController : MonoBehaviour
 
         return !leftCollider.bounds.Contains(newPosition - extents)
             && !rightCollider.bounds.Contains(newPosition + extents);
-    }
-
-    private void LaunchProjectile()
-    {
-        var axisVal = Input.GetAxis("Horizontal");
-
-        projectile.transform.parent = this.transform.parent;
-        var rigidBody = projectile.GetComponent<Rigidbody2D>();
-        var force = new Vector2(axisVal * projectileSpeed * forceMultiplier, projectileSpeed * forceMultiplier);
-
-        rigidBody.constraints = RigidbodyConstraints2D.None;
-        rigidBody.AddRelativeForce(force);
-
-        launched = true;
     }
 }

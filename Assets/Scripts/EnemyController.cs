@@ -19,9 +19,10 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Projectile"))
+        var otherObject = collision.gameObject;
+        if (otherObject.CompareTag("Projectile"))
         {
             Destroy(gameObject);
             UpdateHiScore();
