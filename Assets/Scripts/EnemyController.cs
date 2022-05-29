@@ -1,16 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     public int points;
+    private PowerupsManager powerupsManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerupsManager = GameObject.FindGameObjectWithTag("Infrastructure")
+            .GetComponent<PowerupsManager>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,17 @@ public class EnemyController : MonoBehaviour
         if (otherObject.CompareTag("Projectile"))
         {
             Destroy(gameObject);
+            SpawnPowerup();
             UpdateHiScore();
+        }
+    }
+
+    private void SpawnPowerup()
+    {
+        var powerup = powerupsManager.GetPowerup();
+        if (powerup != null)
+        {
+            Instantiate(powerup, transform.position, transform.rotation);
         }
     }
 

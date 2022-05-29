@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -34,6 +35,14 @@ public class PlayerController : MonoBehaviour
             var projController = projectile.GetComponent<ProjectileController>();
             projController.Launch(gameObject);
             launched = true;
+        }
+    }
+
+    public void ApplyPowerup(PowerupController powerup)
+    {
+        if (powerup.powerupType == PowerupType.Speed)
+        {
+            movementSpeed += powerup.powerupSpeedIncrease;
         }
     }
 

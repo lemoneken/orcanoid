@@ -11,6 +11,7 @@ TagManager:
   - Ceiling
   - Floor
   - GameOverScreen
+  - Infrastructure
   layers:
   - Default
   - TransparentFX
