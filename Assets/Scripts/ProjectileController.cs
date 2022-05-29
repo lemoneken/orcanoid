@@ -47,6 +47,9 @@ public class ProjectileController : MonoBehaviour
                 ChangeDirectionVertical();
                 IncreaseSpeed(speedIncreaseJump);
                 break;
+            case "Floor":
+                GameOver();
+                break;
         }
     }
 
@@ -85,5 +88,11 @@ public class ProjectileController : MonoBehaviour
     private void Disattach(GameObject parent)
     {
         transform.parent = parent.transform.parent;
+    }
+
+    private void GameOver()
+    {
+        Destroy(gameObject);
+        GameManager.GameOver();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class HiScoreController : MonoBehaviour
 {
     private TextMeshProUGUI textField;
-    private int totalScore;
+    public int totalScore;
 
     // Start is called before the first frame update
     void Start()

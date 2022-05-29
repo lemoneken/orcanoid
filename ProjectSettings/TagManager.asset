@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Enemy
   - Ceiling
+  - Floor
+  - GameOverScreen
   layers:
   - Default
   - TransparentFX
