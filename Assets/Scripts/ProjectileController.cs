@@ -8,17 +8,18 @@ public class ProjectileController : MonoBehaviour
     public float speedIncreaseStep = .05f;
     public float speedIncreaseJump = 1;
 
-    private float forceMultiplier = 20;
-
+    //Direction and speed
     private float currentSpeedVertical = 0;
-    private float directionVertical = 1; 
-
+    private float directionVertical = 1;
     private float currentSpeedHorizontal = 0;
     private float directionHorizontal = 1;
+
+    private AudioSource bumpAudio;
 
     // Start is called before the first frame update
     void Start()
     {
+        bumpAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,8 @@ public class ProjectileController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var otherObjTag = collision.gameObject.tag;
+        var playMusic = true;
+
         switch (otherObjTag)
         {
             case "Enemy":
@@ -49,7 +52,13 @@ public class ProjectileController : MonoBehaviour
                 break;
             case "Floor":
                 GameOver();
+                playMusic = false;
                 break;
+        }
+
+        if (playMusic)
+        {
+            bumpAudio.Play();
         }
     }
 

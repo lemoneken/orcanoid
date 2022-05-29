@@ -1974,6 +1974,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5683556085965398249, guid: d094c1e971ab61c4d81f352273be9003, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683556085965398249, guid: d094c1e971ab61c4d81f352273be9003, type: 3}
+      propertyPath: m_Pitch
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683556085965398249, guid: d094c1e971ab61c4d81f352273be9003, type: 3}
+      propertyPath: m_Volume
+      value: 0.503
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d094c1e971ab61c4d81f352273be9003, type: 3}
 --- !u!1001 &1625380834647186382

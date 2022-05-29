@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
         if (newPosition != oldPosition && InsideLevel(newPosition))
         {
-            transform.position = newPosition;           
+            transform.position = newPosition;
         }
 
         if (!launched && Input.GetButtonDown("Jump"))
