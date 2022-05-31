@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5409926777662969778}
   - component: {fileID: 6796645684001118257}
   m_Layer: 0
-  m_Name: Powerup
+  m_Name: PowerupSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 0.01
-  powerupType: 0
-  powerupSpeedIncrease: 10
+  powerupType: 1
+  powerupValue: 5
 --- !u!61 &-5409926777662969778
 BoxCollider2D:
   m_ObjectHideFlags: 0

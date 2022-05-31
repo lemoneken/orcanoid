@@ -40,10 +40,22 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyPowerup(PowerupController powerup)
     {
-        if (powerup.powerupType == PowerupType.Speed)
+        switch (powerup.powerupType)
         {
-            movementSpeed += powerup.powerupSpeedIncrease;
+            case PowerupType.Speed:
+                movementSpeed += powerup.powerupValue;
+                break;
+            case PowerupType.Size:
+                IncreaseWidth(powerup.powerupValue);
+                break;
         }
+    }
+
+    private void IncreaseWidth(float widthIncrease)
+    {
+        var oldScale = transform.localScale;
+        var newScaleX = oldScale.x * (1 + widthIncrease);
+        transform.localScale = new Vector3(newScaleX, oldScale.y, oldScale.z);
     }
 
     private bool InsideLevel(Vector3 newPosition)

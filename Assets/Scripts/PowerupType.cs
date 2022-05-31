@@ -1,4 +1,5 @@
 ﻿public enum PowerupType
 {
-    Speed
+    Speed = 1,
+    Size = 2,
 }

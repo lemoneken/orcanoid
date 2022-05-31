@@ -1374,7 +1374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525428df524eae2499fd5a5f60b71fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupPrefab: {fileID: 8396637603034111325, guid: e2649a149c3501d498ee8156493e46d9, type: 3}
+  powerupPrefabs:
+  - {fileID: 8396637603034111325, guid: e2649a149c3501d498ee8156493e46d9, type: 3}
+  - {fileID: 8396637603034111325, guid: e12423f1b38b9d44f9fdbabd19afae09, type: 3}
+  randomizerQueueSize: 4
 --- !u!1001 &1376907398
 PrefabInstance:
   m_ObjectHideFlags: 0

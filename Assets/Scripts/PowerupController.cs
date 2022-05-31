@@ -4,7 +4,7 @@ public class PowerupController : MonoBehaviour
 {
     public float fallSpeed = .01f;
     public PowerupType powerupType;
-    public float powerupSpeedIncrease = 5f;
+    public float powerupValue = 5f;
 
     // Start is called before the first frame update
     void Start()

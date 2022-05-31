@@ -1,14 +1,16 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class PowerupsManager : MonoBehaviour
 {
-    public GameObject powerupPrefab;
+    public List<GameObject> powerupPrefabs;
 
     private int numberOfEnemies;
 
     //Determines probability of powerup being returned. The greater the number, the bigger rarity.
-    private int randomizerQueueSize = 3;
+    public int randomizerQueueSize = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -26,20 +28,15 @@ public class PowerupsManager : MonoBehaviour
 
     public GameObject GetPowerup()
     {
-        var isPowerupReturned = DeterminePowerup();
-        if (isPowerupReturned)
-        {
-            powerupPrefab.GetComponent<PowerupController>()
-                .powerupType = PowerupType.Speed;
-
-            return powerupPrefab;
-        }
-        else return null;
+        var powerupNumber = DeterminePowerup();
+        return powerupNumber < powerupPrefabs.Count
+            ? powerupPrefabs[powerupNumber]
+            : null;
     }
 
-    private bool DeterminePowerup()
+    private int DeterminePowerup()
     {
-        var randomNumber = Random.Range(1, randomizerQueueSize);
-        return randomNumber == 1;
+        var randomNumber = Random.Range(0, randomizerQueueSize);
+        return randomNumber;
     }
 }
