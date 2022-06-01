@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = .1f;
+    public float powerupCooldown = 5f;
 
     public GameObject leftWall;
     public GameObject rightWall;
@@ -43,12 +45,34 @@ public class PlayerController : MonoBehaviour
         switch (powerup.powerupType)
         {
             case PowerupType.Speed:
-                movementSpeed += powerup.powerupValue;
+                IncreaseSpeed(powerup.powerupValue);
+                StartCoroutine(nameof(DecreaseSpeed), powerup.powerupValue);
                 break;
             case PowerupType.Size:
                 IncreaseWidth(powerup.powerupValue);
+                StartCoroutine(nameof(DecreaseWidth), powerup.powerupValue);
                 break;
         }
+    }
+
+    private IEnumerator DecreaseWidth(object widthDecrease)
+    {
+        yield return new WaitForSeconds(powerupCooldown);
+
+        var oldScale = transform.localScale;
+        var newScaleX = oldScale.x / (1 + (float) widthDecrease);
+        transform.localScale = new Vector3(newScaleX, oldScale.y, oldScale.z);
+    }
+
+    private IEnumerator DecreaseSpeed(object speedDecrease)
+    {
+        yield return new WaitForSeconds(powerupCooldown);
+        movementSpeed -= (float) speedDecrease;
+    }
+
+    private void IncreaseSpeed(float powerupValue)
+    {
+        movementSpeed += powerupValue;
     }
 
     private void IncreaseWidth(float widthIncrease)
